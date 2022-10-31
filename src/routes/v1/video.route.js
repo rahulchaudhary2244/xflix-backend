@@ -6,7 +6,8 @@ const {
     getVideoById,
     incrementVideoViewCountById,
     changeVideoVoteCountById,
-    dropAndInsertMany,
+    deleteAll,
+    insertMany,
 } = videoController;
 const {
     validateJoiSchema_body,
@@ -44,6 +45,7 @@ router.patch(
     changeVideoVoteCountById
 );
 
-router.post('/delete-and-insert-many', dropAndInsertMany);
+router.delete('/delete-all', deleteAll);
+router.post('/insert-many', insertMany);
 
 module.exports = router;

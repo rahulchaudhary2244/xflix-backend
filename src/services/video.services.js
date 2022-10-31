@@ -112,8 +112,11 @@ class VideoService {
         }
     };
 
-    dropAndInsertMany = async () => {
+    deleteAll = async () => {
         await VideoModel.deleteMany();
+    };
+
+    insertMany = async () => {
         const videos = await VideoModel.insertMany(videoData, {
             ordered: false,
         });

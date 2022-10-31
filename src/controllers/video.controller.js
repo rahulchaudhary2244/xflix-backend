@@ -71,8 +71,13 @@ const changeVideoVoteCountById = catchAsync(async (req, res) => {
     res.status(httpStatus.NO_CONTENT).send();
 });
 
-const dropAndInsertMany = catchAsync(async (req, res) => {
-    const videos = await VideoServiceInstance.dropAndInsertMany();
+const deleteAll = catchAsync(async (req, res) => {
+    await VideoServiceInstance.deleteAll();
+    res.status(httpStatus.NO_CONTENT).send();
+});
+
+const insertMany = catchAsync(async (req, res) => {
+    const videos = await VideoServiceInstance.insertMany();
     res.status(httpStatus.CREATED).json({ videos });
 });
 
@@ -82,5 +87,6 @@ module.exports = {
     getVideoById,
     incrementVideoViewCountById,
     changeVideoVoteCountById,
-    dropAndInsertMany,
+    deleteAll,
+    insertMany,
 };
